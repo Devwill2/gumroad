@@ -556,7 +556,7 @@ const FileEmbedNodeView = ({ node, editor, getPos, updateAttributes }: NodeViewP
         {showingAudioDrawer && downloadUrl ? <AudioPlayer src={downloadUrl} /> : null}
 
         {expanded ? (
-          <div className="drawer paragraphs">
+          <div className="drawer flex flex-col gap-4">
             <fieldset>
               <legend>
                 <label htmlFor={`${uid}name`}>Name</label>
@@ -618,7 +618,7 @@ const FileEmbedNodeView = ({ node, editor, getPos, updateAttributes }: NodeViewP
               <>
                 <fieldset>
                   <legend>Subtitles</legend>
-                  <div className="paragraphs">
+                  <div className="flex flex-col gap-4">
                     <SubtitleList
                       subtitleFiles={file.subtitle_files}
                       onRemoveSubtitle={removeSubtitle}

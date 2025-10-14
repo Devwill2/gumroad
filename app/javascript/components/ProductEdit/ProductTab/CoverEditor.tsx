@@ -98,7 +98,7 @@ export const CoverEditor = ({
                   if (canAddPreview && !isUploading) setIsUploaderOpen(value);
                 }}
               >
-                <div className="paragraphs">
+                <div className="flex flex-col gap-4">
                   <CoverUploader
                     permalink={permalink}
                     setCovers={(covers) => {
@@ -200,7 +200,7 @@ const CoverUploader = ({
         </div>
         <fieldset role="tabpanel" id={`${uid}-url`} hidden={uploader?.type !== "url"}>
           {uploader?.type === "url" ? (
-            <div className="input-with-button">
+            <div className="grid grid-flow-col gap-3 grid-cols-[1fr] auto-cols-max items-center">
               <input
                 type="url"
                 placeholder="https://"

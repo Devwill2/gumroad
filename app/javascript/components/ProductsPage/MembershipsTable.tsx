@@ -80,7 +80,7 @@ export const ProductsPageMembershipsTable = (props: {
   if (!memberships.length) return null;
 
   return (
-    <section className="paragraphs">
+    <section className="flex flex-col gap-4">
       <table aria-busy={isLoading}>
         <caption>Memberships</caption>
         <thead>

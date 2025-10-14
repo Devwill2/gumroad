@@ -122,7 +122,7 @@ const WorkflowRow = ({
       <h3 style={{ marginRight: "auto" }}>{workflow.name}</h3>
       <div style={{ display: "flex", gap: "var(--spacer-4)", alignItems: "center" }}>
         {workflow.published ? <small>Published</small> : <small>Unpublished</small>}
-        <div className="button-group">
+        <div className="flex flex-wrap gap-2">
           <Link
             className="button"
             to={`/workflows/${workflow.external_id}/edit`}
@@ -180,7 +180,7 @@ const WorkflowRow = ({
       </tbody>
     </table>
   ) : (
-    <section className="paragraphs" key={workflow.external_id}>
+    <section className="flex flex-col gap-4" key={workflow.external_id}>
       {header}
       <div className="placeholder">
         <h4>

@@ -441,7 +441,7 @@ export const Product = ({
             discountCode.valid ? (
               (discountedPriceCents < priceCents || discountCode.discount.minimum_quantity) && !pppDiscounted ? (
                 <div role="status" className="success">
-                  <div className="paragraphs">
+                  <div className="flex flex-col gap-4">
                     {discountCode.discount.minimum_quantity
                       ? `Get ${
                           discountCode.discount.type === "percent"
@@ -755,7 +755,7 @@ const Reviews = ({
         ))}
       </section>
       {state.reviews.length ? (
-        <section className="paragraphs" style={{ marginTop: "var(--spacer-2)" }}>
+        <section className="flex flex-col gap-4" style={{ marginTop: "var(--spacer-2)" }}>
           {state.reviews.map((review, idx) => (
             <Review
               key={review.id}
@@ -846,7 +846,7 @@ const RefundPolicyInfo = ({ refundPolicy, permalink }: { refundPolicy: RefundPol
           title={refundPolicy.title}
           footer={<p>{lastUpdated}</p>}
         >
-          <div className="paragraphs">
+          <div className="flex flex-col gap-4">
             <div
               dangerouslySetInnerHTML={{
                 __html: refundPolicy.fine_print,
