@@ -19,6 +19,7 @@ import { useUserAgentInfo } from "$app/components/UserAgent";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/payouts.png";
+import { Placeholder } from "$app/components/ui/Placeholder";
 
 const INSTANT_PAYOUT_FEE_PERCENTAGE = 0.03;
 const MINIMUM_INSTANT_PAYOUT_AMOUNT_CENTS = 1000;
@@ -526,7 +527,7 @@ const Period = ({ payoutPeriodData }: { payoutPeriodData: PayoutPeriodData }) =>
 
 const PeriodEmpty = ({ minimumPayoutAmountCents }: { minimumPayoutAmountCents: number }) => (
   <div className="period period-empty full column">
-    <div className="grid gap-3 rounded border border-dashed border-border p-6 text-center justify-items-center bg-filled">
+    <Placeholder>
       <figure>
         <img src={placeholder} />
       </figure>
@@ -539,7 +540,7 @@ const PeriodEmpty = ({ minimumPayoutAmountCents }: { minimumPayoutAmountCents: n
       <NavigationButton color="accent" href="/help/article/269-balance-page">
         Learn about payouts
       </NavigationButton>
-    </div>
+    </Placeholder>
   </div>
 );
 
