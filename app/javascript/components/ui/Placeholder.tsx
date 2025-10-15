@@ -14,6 +14,7 @@ const Placeholder: React.FC<PlaceholderProps> = ({ className, children, ...rest 
     <div
       className={classNames(
         "grid gap-3 rounded border border-dashed border-border p-6 text-center justify-items-center bg-filled",
+        "[&>.icon]:text-xl",
         className,
       )}
       {...rest}
