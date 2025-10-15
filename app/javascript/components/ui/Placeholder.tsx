@@ -9,7 +9,7 @@ type PlaceholderProps = React.PropsWithChildren<{
   style?: React.CSSProperties;
 }>;
 
-export const Placeholder: React.FC<PlaceholderProps> = ({ className, children, ...rest }) => {
+const Placeholder: React.FC<PlaceholderProps> = ({ className, children, ...rest }) => {
   return (
     <div
       className={classNames(
