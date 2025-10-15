@@ -84,7 +84,7 @@ import { useSortingTableDriver } from "$app/components/useSortingTableDriver";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/customers.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type Product = { id: string; name: string; variants: { id: string; name: string }[] };
 

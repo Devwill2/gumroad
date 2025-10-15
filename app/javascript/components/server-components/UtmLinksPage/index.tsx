@@ -18,7 +18,7 @@ import { Sort } from "$app/components/useSortingTableDriver";
 
 import { UtmLinkForm } from "./UtmLinkForm";
 import UtmLinkList from "./UtmLinkList";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 export const UtmLinkLayout = ({
   title,

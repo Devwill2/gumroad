@@ -5,7 +5,7 @@ import { formatPriceCentsWithCurrencySymbol } from "$app/utils/currency";
 import { Icon } from "$app/components/Icons";
 import { useLoggedInUser } from "$app/components/LoggedInUser";
 import { useUserAgentInfo } from "$app/components/UserAgent";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 type SaleItemDetails = {
   price_cents: number;
   email: string;

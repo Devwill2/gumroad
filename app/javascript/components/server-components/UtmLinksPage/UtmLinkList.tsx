@@ -28,7 +28,7 @@ import { useDebouncedCallback } from "$app/components/useDebouncedCallback";
 import { useUserAgentInfo } from "$app/components/UserAgent";
 import { Sort, useSortingTableDriver } from "$app/components/useSortingTableDriver";
 import { WithTooltip } from "$app/components/WithTooltip";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 import noLinksYetPlaceholder from "$assets/images/placeholders/utm_links_empty.png";
 import noLinksFoundPlaceholder from "$assets/images/placeholders/utm_links_not_found.png";
 

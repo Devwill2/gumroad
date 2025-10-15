@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 import { Button } from "$app/components/Button";
 import { Icon } from "$app/components/Icons";

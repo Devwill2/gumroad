@@ -11,7 +11,7 @@ import { CollabsProductsTable } from "$app/components/ProductsPage/Collabs/Produ
 import { Stats as StatsComponent } from "$app/components/Stats";
 import { useUserAgentInfo } from "$app/components/UserAgent";
 import { WithTooltip } from "$app/components/WithTooltip";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 import placeholder from "$assets/images/placeholders/affiliated.png";
 

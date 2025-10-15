@@ -20,7 +20,7 @@ import { useLoggedInUser } from "$app/components/LoggedInUser";
 import { DownloadTaxFormsPopover } from "$app/components/server-components/DashboardPage/DownloadTaxFormsPopover";
 import { Stats } from "$app/components/Stats";
 import { PageHeader } from "$app/components/ui/PageHeader";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 import { useUserAgentInfo } from "$app/components/UserAgent";
 import { useRunOnce } from "$app/components/useRunOnce";
 import { useClientSortingTableDriver } from "$app/components/useSortingTableDriver";

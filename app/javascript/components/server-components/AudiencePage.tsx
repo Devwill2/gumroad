@@ -20,7 +20,7 @@ import { ExportSubscribersPopover } from "$app/components/server-components/Foll
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/audience.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 const AudiencePage = ({ total_follower_count }: { total_follower_count: number }) => {
   const dateRange = useAnalyticsDateRange();

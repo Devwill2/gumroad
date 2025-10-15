@@ -14,7 +14,7 @@ import { Toggle } from "$app/components/Toggle";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/wishlists.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type Wishlist = {
   id: string;

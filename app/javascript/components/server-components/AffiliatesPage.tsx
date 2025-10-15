@@ -62,7 +62,7 @@ import { Sort, useClientSortingTableDriver, useSortingTableDriver } from "$app/c
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/affiliated.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type LayoutProps = {
   title: string;

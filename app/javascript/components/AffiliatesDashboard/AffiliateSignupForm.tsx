@@ -22,7 +22,7 @@ import { ToggleSettingRow } from "$app/components/SettingRow";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholderImage from "$assets/images/placeholders/affiliate-signup-form.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type InvalidProductAttrs = Set<"commission" | "destination_url">;
 

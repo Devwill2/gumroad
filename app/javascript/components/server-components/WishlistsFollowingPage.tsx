@@ -11,7 +11,7 @@ import { Popover } from "$app/components/Popover";
 import { showAlert } from "$app/components/server-components/Alert";
 
 import placeholder from "$assets/images/placeholders/wishlists-following.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type Wishlist = {
   id: string;

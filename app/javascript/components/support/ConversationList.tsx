@@ -3,7 +3,7 @@ import placeholderImage from "images/placeholders/support.png";
 import React from "react";
 
 import { Button } from "$app/components/Button";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 export function ConversationList({
   onSelect,

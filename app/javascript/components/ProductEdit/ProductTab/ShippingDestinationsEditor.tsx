@@ -5,7 +5,7 @@ import { Icon } from "$app/components/Icons";
 import { PriceInput } from "$app/components/PriceInput";
 import { ShippingDestination, useProductEditContext } from "$app/components/ProductEdit/state";
 import { WithTooltip } from "$app/components/WithTooltip";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 export const ShippingDestinationsEditor = ({
   shippingDestinations,

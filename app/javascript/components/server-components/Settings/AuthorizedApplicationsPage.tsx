@@ -15,7 +15,7 @@ import { Layout } from "$app/components/Settings/Layout";
 import { useUserAgentInfo } from "$app/components/UserAgent";
 
 import placeholderAppIcon from "$assets/images/gumroad_app.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type AuthorizedApplication = {
   name: string;

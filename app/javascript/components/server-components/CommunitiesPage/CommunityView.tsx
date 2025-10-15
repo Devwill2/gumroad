@@ -42,7 +42,7 @@ import { useCommunities } from "./useCommunities";
 import { UserAvatar } from "./UserAvatar";
 
 import placeholderImage from "$assets/images/placeholders/community.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 const COMMUNITY_CHANNEL_NAME = "CommunityChannel";
 const USER_CHANNEL_NAME = "UserChannel";

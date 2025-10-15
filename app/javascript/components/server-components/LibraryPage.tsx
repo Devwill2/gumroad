@@ -21,7 +21,7 @@ import { Thumbnail } from "$app/components/Product/Thumbnail";
 import { Select } from "$app/components/Select";
 import { showAlert } from "$app/components/server-components/Alert";
 import { ProductCardGrid } from "$app/components/ui/ProductCardGrid";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 import { useAddThirdPartyAnalytics } from "$app/components/useAddThirdPartyAnalytics";
 import { useGlobalEventListener } from "$app/components/useGlobalEventListener";
 import { useIsAboveBreakpoint } from "$app/components/useIsAboveBreakpoint";

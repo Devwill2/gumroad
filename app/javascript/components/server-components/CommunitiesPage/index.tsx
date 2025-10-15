@@ -13,7 +13,7 @@ import { getCommunities } from "$app/data/communities";
 import { buildStaticRouter, GlobalProps, register } from "$app/utils/serverComponentUtil";
 
 import { CommunityView } from "./CommunityView";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 const ErrorBoundary = () => {
   const error = useRouteError();

@@ -23,7 +23,7 @@ import WorkflowList from "$app/components/server-components/WorkflowsPage/Workfl
 import { Toggle } from "$app/components/Toggle";
 import { PageHeader } from "$app/components/ui/PageHeader";
 import { Tabs, Tab } from "$app/components/ui/Tabs";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 type LayoutProps = {
   title: string;

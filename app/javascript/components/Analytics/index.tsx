@@ -21,7 +21,7 @@ import { useAnalyticsDateRange } from "$app/components/Analytics/useAnalyticsDat
 import { DateRangePicker } from "$app/components/DateRangePicker";
 import { Progress } from "$app/components/Progress";
 import { showAlert } from "$app/components/server-components/Alert";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 import placeholder from "$assets/images/placeholders/sales.png";
 

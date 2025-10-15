@@ -14,7 +14,7 @@ import { useDebouncedCallback } from "$app/components/useDebouncedCallback";
 import { useOnChange } from "$app/components/useOnChange";
 
 import { Card } from "./Card";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 export const SORT_BY_LABELS = {
   default: "Default",

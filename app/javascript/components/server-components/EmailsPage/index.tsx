@@ -29,7 +29,7 @@ import { ScheduledTab } from "$app/components/server-components/EmailsPage/Sched
 import { PageHeader } from "$app/components/ui/PageHeader";
 import { Tabs, Tab } from "$app/components/ui/Tabs";
 import { WithTooltip } from "$app/components/WithTooltip";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 const TABS = ["published", "scheduled", "drafts", "subscribers"] as const;
 
 export const emailTabPath = (tab: (typeof TABS)[number]) => `/emails/${tab}`;

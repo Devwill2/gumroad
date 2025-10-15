@@ -20,7 +20,7 @@ import { showAlert } from "$app/components/server-components/Alert";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/collaborators.png";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 const formatProductNames = (incomingCollaborator: IncomingCollaborator) => {
   if (incomingCollaborator.products.length === 0) {

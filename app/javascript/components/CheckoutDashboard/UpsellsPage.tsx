@@ -35,7 +35,7 @@ import { applySelection } from "$app/components/Product/ConfigurationSelector";
 import { Select } from "$app/components/Select";
 import { CrossSellModal, UpsellModal } from "$app/components/server-components/CheckoutPage";
 import { PageHeader } from "$app/components/ui/PageHeader";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 import { useDebouncedCallback } from "$app/components/useDebouncedCallback";
 import { Sort, useSortingTableDriver } from "$app/components/useSortingTableDriver";
 

@@ -2,7 +2,7 @@ import { Editor } from "@tiptap/core";
 import cx from "classnames";
 import { format } from "date-fns";
 import * as React from "react";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 import { sendSamplePriceChangeEmail } from "$app/data/membership_tiers";
 import { getIsSingleUnitCurrency } from "$app/utils/currency";

@@ -32,7 +32,7 @@ import { SubtitleUploadBox } from "$app/components/SubtitleUploadBox";
 import { FileEmbedGroup, titleWithFallback } from "$app/components/TiptapExtensions/FileEmbedGroup";
 import { NodeActionsMenu } from "$app/components/TiptapExtensions/NodeActionsMenu";
 import { WithTooltip } from "$app/components/WithTooltip";
-import { Placeholder } from "$app/components/ui/Placeholder";
+import Placeholder from "$app/components/ui/Placeholder";
 
 export const getDownloadUrl = (productId: string, file: FileEntry) =>
   file.extension === "URL" || file.status.type === "removed"
