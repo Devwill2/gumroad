@@ -32,10 +32,10 @@ import { Layout } from "$app/components/Collaborators/Layout";
 import { Icon } from "$app/components/Icons";
 import { useLoggedInUser } from "$app/components/LoggedInUser";
 import { showAlert } from "$app/components/server-components/Alert";
+import Placeholder from "$app/components/ui/Placeholder";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/collaborators.png";
-import Placeholder from "$app/components/ui/Placeholder";
 
 const formatProductNames = (collaborator: Collaborator) => {
   if (collaborator.products.length === 0) {

@@ -2,7 +2,6 @@ import { Editor } from "@tiptap/core";
 import cx from "classnames";
 import { format } from "date-fns";
 import * as React from "react";
-import Placeholder from "$app/components/ui/Placeholder";
 
 import { sendSamplePriceChangeEmail } from "$app/data/membership_tiers";
 import { getIsSingleUnitCurrency } from "$app/utils/currency";
@@ -28,6 +27,7 @@ import { RichTextEditor } from "$app/components/RichTextEditor";
 import { showAlert } from "$app/components/server-components/Alert";
 import { Drawer, ReorderingHandle, SortableList } from "$app/components/SortableList";
 import { Toggle } from "$app/components/Toggle";
+import Placeholder from "$app/components/ui/Placeholder";
 import { useDebouncedCallback } from "$app/components/useDebouncedCallback";
 import { useRunOnce } from "$app/components/useRunOnce";
 import { WithTooltip } from "$app/components/WithTooltip";

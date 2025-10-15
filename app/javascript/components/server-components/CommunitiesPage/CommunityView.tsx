@@ -29,6 +29,7 @@ import { Modal } from "$app/components/Modal";
 import { Popover } from "$app/components/Popover";
 import { showAlert } from "$app/components/server-components/Alert";
 import { ToggleSettingRow } from "$app/components/SettingRow";
+import Placeholder from "$app/components/ui/Placeholder";
 import { useDebouncedCallback } from "$app/components/useDebouncedCallback";
 import { useIsAboveBreakpoint } from "$app/components/useIsAboveBreakpoint";
 import { useRunOnce } from "$app/components/useRunOnce";
@@ -42,7 +43,6 @@ import { useCommunities } from "./useCommunities";
 import { UserAvatar } from "./UserAvatar";
 
 import placeholderImage from "$assets/images/placeholders/community.png";
-import Placeholder from "$app/components/ui/Placeholder";
 
 const COMMUNITY_CHANNEL_NAME = "CommunityChannel";
 const USER_CHANNEL_NAME = "UserChannel";

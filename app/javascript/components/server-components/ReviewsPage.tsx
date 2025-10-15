@@ -12,8 +12,8 @@ import { Popover } from "$app/components/Popover";
 import { Thumbnail } from "$app/components/Product/Thumbnail";
 import { RatingStars } from "$app/components/RatingStars";
 import { ReviewForm } from "$app/components/ReviewForm";
-import { useOnChange } from "$app/components/useOnChange";
 import Placeholder from "$app/components/ui/Placeholder";
+import { useOnChange } from "$app/components/useOnChange";
 
 import placeholderImage from "$assets/images/placeholders/reviews.png";
 

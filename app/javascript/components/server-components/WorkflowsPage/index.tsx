@@ -22,8 +22,8 @@ import WorkflowForm, { WorkflowTrigger } from "$app/components/server-components
 import WorkflowList from "$app/components/server-components/WorkflowsPage/WorkflowList";
 import { Toggle } from "$app/components/Toggle";
 import { PageHeader } from "$app/components/ui/PageHeader";
-import { Tabs, Tab } from "$app/components/ui/Tabs";
 import Placeholder from "$app/components/ui/Placeholder";
+import { Tabs, Tab } from "$app/components/ui/Tabs";
 
 type LayoutProps = {
   title: string;

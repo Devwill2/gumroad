@@ -1,5 +1,4 @@
 import * as React from "react";
-import Placeholder from "$app/components/ui/Placeholder";
 
 import { Button } from "$app/components/Button";
 import { Icon } from "$app/components/Icons";
@@ -10,6 +9,7 @@ import { useProductUrl } from "$app/components/ProductEdit/Layout";
 import { Version, useProductEditContext } from "$app/components/ProductEdit/state";
 import { Drawer, ReorderingHandle, SortableList } from "$app/components/SortableList";
 import { Toggle } from "$app/components/Toggle";
+import Placeholder from "$app/components/ui/Placeholder";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 let newVersionId = 0;

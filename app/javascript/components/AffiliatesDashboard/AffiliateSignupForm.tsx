@@ -19,10 +19,10 @@ import { NumberInput } from "$app/components/NumberInput";
 import { AffiliatesNavigation, Layout } from "$app/components/server-components/AffiliatesPage";
 import { showAlert } from "$app/components/server-components/Alert";
 import { ToggleSettingRow } from "$app/components/SettingRow";
+import Placeholder from "$app/components/ui/Placeholder";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholderImage from "$assets/images/placeholders/affiliate-signup-form.png";
-import Placeholder from "$app/components/ui/Placeholder";
 
 type InvalidProductAttrs = Set<"commission" | "destination_url">;
 

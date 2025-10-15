@@ -11,10 +11,10 @@ import { Layout } from "$app/components/Library/Layout";
 import { Modal } from "$app/components/Modal";
 import { showAlert } from "$app/components/server-components/Alert";
 import { Toggle } from "$app/components/Toggle";
+import Placeholder from "$app/components/ui/Placeholder";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/wishlists.png";
-import Placeholder from "$app/components/ui/Placeholder";
 
 type Wishlist = {
   id: string;

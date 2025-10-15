@@ -14,8 +14,8 @@ import { Modal } from "$app/components/Modal";
 import { showAlert } from "$app/components/server-components/Alert";
 import { Layout } from "$app/components/server-components/WorkflowsPage";
 import Placeholder from "$app/components/ui/Placeholder";
-import placeholder from "$assets/images/placeholders/workflows.png";
 
+import placeholder from "$assets/images/placeholders/workflows.png";
 
 const WorkflowList = () => {
   const loggedInUser = useLoggedInUser();

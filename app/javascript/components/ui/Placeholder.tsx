@@ -9,21 +9,17 @@ type PlaceholderProps = React.PropsWithChildren<{
   style?: React.CSSProperties;
 }>;
 
-const Placeholder: React.FC<PlaceholderProps> = ({ className, children, ...rest }) => {
-  return (
-    <div
-      className={classNames(
-        "grid gap-3 rounded border border-dashed border-border p-6 text-center justify-items-center bg-filled",
-        "[&>.icon]:text-xl",
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </div>
-  );
-};
+const Placeholder: React.FC<PlaceholderProps> = ({ className, children, ...rest }) => (
+  <div
+    className={classNames(
+      "bg-filled grid justify-items-center gap-3 rounded border border-dashed border-border p-6 text-center",
+      "[&>.icon]:text-xl",
+      className,
+    )}
+    {...rest}
+  >
+    {children}
+  </div>
+);
 
 export default Placeholder;
-
-

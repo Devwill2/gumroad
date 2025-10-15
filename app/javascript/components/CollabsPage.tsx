@@ -9,9 +9,9 @@ import { ProductsLayout } from "$app/components/ProductsLayout";
 import { CollabsMembershipsTable } from "$app/components/ProductsPage/Collabs/MembershipsTable";
 import { CollabsProductsTable } from "$app/components/ProductsPage/Collabs/ProductsTable";
 import { Stats as StatsComponent } from "$app/components/Stats";
+import Placeholder from "$app/components/ui/Placeholder";
 import { useUserAgentInfo } from "$app/components/UserAgent";
 import { WithTooltip } from "$app/components/WithTooltip";
-import Placeholder from "$app/components/ui/Placeholder";
 
 import placeholder from "$assets/images/placeholders/affiliated.png";
 

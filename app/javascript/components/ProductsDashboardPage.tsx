@@ -7,12 +7,12 @@ import { NavigationButtonInertia } from "$app/components/NavigationButton";
 import { PaginationProps } from "$app/components/Pagination";
 import { Popover } from "$app/components/Popover";
 import { ProductsLayout } from "$app/components/ProductsLayout";
+import Placeholder from "$app/components/ui/Placeholder";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import ProductsPage from "./ProductsPage";
 
 import placeholder from "$assets/images/product_nudge.svg";
-import Placeholder from "$app/components/ui/Placeholder";
 
 export type ProductsDashboardPageProps = {
   memberships: Membership[];

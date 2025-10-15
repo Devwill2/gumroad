@@ -17,10 +17,10 @@ import { Popover } from "$app/components/Popover";
 import { Progress } from "$app/components/Progress";
 import { showAlert } from "$app/components/server-components/Alert";
 import { ExportSubscribersPopover } from "$app/components/server-components/FollowersPage/ExportSubscribersPopover";
+import Placeholder from "$app/components/ui/Placeholder";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 import placeholder from "$assets/images/placeholders/audience.png";
-import Placeholder from "$app/components/ui/Placeholder";
 
 const AudiencePage = ({ total_follower_count }: { total_follower_count: number }) => {
   const dateRange = useAnalyticsDateRange();
