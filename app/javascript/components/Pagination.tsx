@@ -16,16 +16,14 @@ type Props = {
 };
 
 const PageNumber = ({ page, isCurrent, onClick }: { page: number; isCurrent: boolean; onClick: () => void }) => (
-  <li>
-    <Button
-      small
-      color={isCurrent ? "primary" : undefined}
-      aria-current={isCurrent ? "page" : undefined}
-      onClick={() => (isCurrent ? null : onClick())}
-    >
-      {page}
-    </Button>
-  </li>
+  <Button
+    small
+    color={isCurrent ? "primary" : undefined}
+    aria-current={isCurrent ? "page" : undefined}
+    onClick={() => (isCurrent ? null : onClick())}
+  >
+    {page}
+  </Button>
 );
 
 export const Pagination = ({ pagination, pageDisplayCount = 10, onChangePage }: Props) => {
@@ -56,7 +54,7 @@ export const Pagination = ({ pagination, pageDisplayCount = 10, onChangePage }: 
         <Icon name="outline-cheveron-left" />
         Previous
       </Button>
-      <menu className="hidden lg:flex lg:flex-grow lg:justify-center lg:gap-2 list-none">
+      <div className="hidden lg:flex lg:flex-grow lg:justify-center lg:gap-2">
         {firstBoundaryPageShown ? (
           <>
             <PageNumber page={1} isCurrent={pagination.page === 1} onClick={() => onChangePage(1)} />
@@ -76,7 +74,7 @@ export const Pagination = ({ pagination, pageDisplayCount = 10, onChangePage }: 
             />
           </>
         ) : null}
-      </menu>
+      </div>
       <Button small disabled={pagination.page + 1 > pagination.pages} onClick={() => onChangePage(pagination.page + 1)}>
         Next
         <Icon name="outline-cheveron-right" />
