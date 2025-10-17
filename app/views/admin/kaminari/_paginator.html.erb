@@ -8,10 +8,11 @@
 %>
 
 <%= paginator.render do %>
-  <div class="pagination" role="navigation" aria-label="Pagination">
+  <%# TODO: Migrate to React Pagination component - replace with <Pagination /> component %>
+  <div class="flex gap-2 w-full justify-center" role="navigation" aria-label="Pagination">
     <%= first_page_tag %>
     <%= prev_page_tag %>
-    <menu>
+    <menu class="hidden lg:flex lg:flex-grow lg:justify-center lg:gap-2">
       <% each_page do |page| %>
         <% if page.display_tag? %>
           <li>

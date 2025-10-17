@@ -216,7 +216,7 @@ export const PdfReaderPage = ({
             </fieldset>
           </Popover>
           <div className="flex items-center gap-1 p-4 whitespace-nowrap tabular-nums">
-            <div className="pagination">
+            <div className="text-sm text-gray-600">
               {pageNumber} of {pageCount}
             </div>
             <button
