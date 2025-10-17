@@ -12,15 +12,13 @@
   <div class="flex gap-2 w-full justify-center" role="navigation" aria-label="Pagination">
     <%= first_page_tag %>
     <%= prev_page_tag %>
-    <menu class="hidden lg:flex lg:flex-grow lg:justify-center lg:gap-2">
+    <div class="hidden lg:flex lg:flex-grow lg:justify-center lg:gap-2">
       <% each_page do |page| %>
         <% if page.display_tag? %>
-          <li>
-            <%= page_tag page %>
-          </li>
+          <%= page_tag page %>
         <% end %>
       <% end %>
-    </menu>
+    </div>
     <%= next_page_tag %>
     <%= last_page_tag %>
   </div>
