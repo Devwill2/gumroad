@@ -11,12 +11,16 @@ FactoryBot.define do
     end
 
     before(:create) do |subscription, evaluator|
-      payment_option = create(
-        :payment_option,
+      payment_option_attributes = {
         subscription:,
-        price: evaluator.price || subscription.link.default_price,
-        installment_plan: subscription.is_installment_plan ? subscription.link.installment_plan : nil
-      )
+        price: evaluator.price || subscription.link.default_price
+      }
+      
+      if subscription.is_installment_plan && subscription.link.installment_plan.present?
+        payment_option_attributes[:installment_plan] = subscription.link.installment_plan
+      end
+      
+      payment_option = create(:payment_option, payment_option_attributes)
       subscription.payment_options << payment_option
 
       if subscription.is_installment_plan
