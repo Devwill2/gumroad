@@ -6,6 +6,5 @@ class AddInstallmentPlanSnapshotToPaymentOptions < ActiveRecord::Migration[7.1]
     add_column :payment_options, :installment_plan_number_of_installments, :integer
     add_column :payment_options, :installment_plan_recurrence, :string
 
-    add_index :payment_options, :installment_plan_snapshot, using: :gin if connection.adapter_name == 'PostgreSQL'
   end
 end
