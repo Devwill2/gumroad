@@ -707,14 +707,13 @@ describe "PurchaseInstallments", :vcr do
 
     it "calculates installment payments using PaymentOption's method" do
       result = purchase.calculate_installment_payment_price_cents(3000)
-      expect(result).to eq(1000) # First installment (1000 + 0 remainder)
+      expect(result).to eq(1000)
     end
 
     it "uses snapshot data when available" do
       payment_option = subscription.payment_options.first
       payment_option.update!(installment_plan: nil)
 
-      # Create snapshot with complete data
       payment_option.create_installment_plan_snapshot!(
         number_of_installments: 2,
         recurrence: "monthly",
@@ -724,7 +723,7 @@ describe "PurchaseInstallments", :vcr do
       )
 
       result = purchase.calculate_installment_payment_price_cents(3000)
-      expect(result).to eq(1500) # First installment (1500 + 0 remainder)
+      expect(result).to eq(1500)
     end
 
     it "returns nil for non-installment purchases" do
