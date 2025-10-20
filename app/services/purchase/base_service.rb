@@ -53,17 +53,27 @@ class Purchase::BaseService
 
       if purchase.is_installment_payment && purchase.link.installment_plan.present?
         payment_option_attributes.merge!(
-          installment_plan_snapshot: {
-            number_of_installments: purchase.link.installment_plan.number_of_installments,
-            recurrence: purchase.link.installment_plan.recurrence
-          },
-          installment_plan_number_of_installments: purchase.link.installment_plan.number_of_installments,
-          installment_plan_recurrence: purchase.link.installment_plan.recurrence
+          installment_plan: purchase.link.installment_plan
         )
       end
 
       subscription.payment_options << PaymentOption.new(payment_option_attributes)
       subscription.save!
+
+      if purchase.is_installment_payment && purchase.link.installment_plan.present?
+        installment_plan = purchase.link.installment_plan
+        total_price_cents = purchase.price.cents
+        price_per_installment = total_price_cents / installment_plan.number_of_installments
+
+        subscription.last_payment_option.create_installment_plan_snapshot!(
+          number_of_installments: installment_plan.number_of_installments,
+          recurrence: installment_plan.recurrence,
+          total_price_cents: total_price_cents,
+          currency: purchase.price.currency,
+          price_cents: price_per_installment
+        )
+      end
+
       subscription.purchases << [purchase, giftee_purchase].compact
     end
 

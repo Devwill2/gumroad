@@ -712,22 +712,19 @@ describe "PurchaseInstallments", :vcr do
 
     it "uses snapshot data when available" do
       payment_option = subscription.payment_options.first
-      payment_option.update!(
-        installment_plan_snapshot: { number_of_installments: 2, recurrence: "monthly" },
-        installment_plan_number_of_installments: 2,
-        installment_plan_recurrence: "monthly",
-        installment_plan: nil
+      payment_option.update!(installment_plan: nil)
+
+      # Create snapshot with complete data
+      payment_option.create_installment_plan_snapshot!(
+        number_of_installments: 2,
+        recurrence: "monthly",
+        total_price_cents: 3000,
+        currency: "USD",
+        price_cents: 1500
       )
 
       result = purchase.calculate_installment_payment_price_cents(3000)
       expect(result).to eq(1500) # First installment (1500 + 0 remainder)
-    end
-
-    it "falls back to original logic when PaymentOption method is not available" do
-      allow_any_instance_of(PaymentOption).to receive(:respond_to?).with(:calculate_installment_payment_price_cents).and_return(false)
-
-      result = purchase.calculate_installment_payment_price_cents(3000)
-      expect(result).to eq(1000) # Should still work with fallback
     end
 
     it "returns nil for non-installment purchases" do

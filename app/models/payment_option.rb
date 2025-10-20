@@ -8,6 +8,7 @@ class PaymentOption < ApplicationRecord
   belongs_to :installment_plan,
              foreign_key: :product_installment_plan_id, class_name: "ProductInstallmentPlan",
              optional: true
+  has_one :installment_plan_snapshot, dependent: :destroy
 
   validates :installment_plan, presence: true, if: -> { subscription&.is_installment_plan && installment_plan_snapshot.blank? }
   validates :installment_plan_snapshot, presence: true, if: -> { subscription&.is_installment_plan && installment_plan.blank? }
@@ -30,10 +31,7 @@ class PaymentOption < ApplicationRecord
 
   def effective_installment_plan
     if installment_plan_snapshot.present?
-      OpenStruct.new(
-        number_of_installments: installment_plan_number_of_installments,
-        recurrence: installment_plan_recurrence
-      )
+      installment_plan_snapshot
     else
       installment_plan
     end
@@ -43,18 +41,11 @@ class PaymentOption < ApplicationRecord
     return unless subscription&.is_installment_plan?
 
     if installment_plan_snapshot.present?
-      number_of_installments = installment_plan_number_of_installments
+      installment_plan_snapshot.calculate_installment_payment_price_cents
     elsif installment_plan.present?
-      number_of_installments = installment_plan.number_of_installments
+      installment_plan.calculate_installment_payment_price_cents(full_price_cents)
     else
       return
-    end
-
-    base_price = full_price_cents / number_of_installments
-    remainder = full_price_cents % number_of_installments
-
-    Array.new(number_of_installments) do |i|
-      i.zero? ? base_price + remainder : base_price
     end
   end
 end

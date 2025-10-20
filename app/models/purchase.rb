@@ -3391,11 +3391,7 @@ class Purchase < ApplicationRecord
       nth_installment = subscription&.purchases&.successful&.count || 0
 
       payment_option = subscription&.last_payment_option
-      if payment_option&.respond_to?(:calculate_installment_payment_price_cents)
-        installment_payments = payment_option.calculate_installment_payment_price_cents(total_price_cents)
-      else
-        installment_payments = fetch_installment_plan.calculate_installment_payment_price_cents(total_price_cents)
-      end
+      installment_payments = payment_option.calculate_installment_payment_price_cents(total_price_cents)
 
       installment_payments[nth_installment] || installment_payments.last
     end

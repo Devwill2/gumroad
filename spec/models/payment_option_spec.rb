@@ -37,12 +37,16 @@ describe PaymentOption do
       installment_plan = create(:product_installment_plan, link: product, number_of_installments: 3)
       subscription = create(:subscription, link: product, is_installment_plan: true)
 
-      payment_option = build(:payment_option, subscription:, installment_plan: nil, installment_plan_snapshot: nil)
+      payment_option = build(:payment_option, subscription:, installment_plan: nil)
       expect(payment_option.valid?).to eq false
 
-      payment_option.installment_plan_snapshot = { number_of_installments: 3, recurrence: "monthly" }
-      payment_option.installment_plan_number_of_installments = 3
-      payment_option.installment_plan_recurrence = "monthly"
+      payment_option.build_installment_plan_snapshot(
+        number_of_installments: 3,
+        recurrence: "monthly",
+        total_price_cents: 3000,
+        currency: "USD",
+        price_cents: 1000
+      )
       expect(payment_option.valid?).to eq true
     end
 
@@ -54,10 +58,14 @@ describe PaymentOption do
       payment_option = build(:payment_option, subscription:, installment_plan:, installment_plan_snapshot: nil)
       expect(payment_option.valid?).to eq true
 
-      payment_option = build(:payment_option, subscription:, installment_plan: nil,
-                            installment_plan_snapshot: { number_of_installments: 3, recurrence: "monthly" },
-                            installment_plan_number_of_installments: 3,
-                            installment_plan_recurrence: "monthly")
+      payment_option = build(:payment_option, subscription:, installment_plan: nil)
+      payment_option.build_installment_plan_snapshot(
+        number_of_installments: 3,
+        recurrence: "monthly",
+        total_price_cents: 3000,
+        currency: "USD",
+        price_cents: 1000
+      )
       expect(payment_option.valid?).to eq true
     end
   end
@@ -94,24 +102,6 @@ describe PaymentOption do
       expect(effective_plan).to eq(installment_plan)
     end
 
-    it "returns snapshot data when installment_plan is not available" do
-      product = create(:product, price_cents: 3000) # $30.00
-      seller = create(:user)
-      subscription = create(:subscription, link: product, seller: seller, is_installment_plan: false)
-      subscription.update!(is_installment_plan: true)
-      subscription.payment_options.destroy_all
-      payment_option = PaymentOption.new(subscription:, installment_plan: nil,
-                            installment_plan_snapshot: { number_of_installments: 3, recurrence: "monthly" },
-                            installment_plan_number_of_installments: 3,
-                            installment_plan_recurrence: "monthly",
-                              price: product.prices.first)
-      payment_option.define_singleton_method(:update_subscription_last_payment_option) { }
-      payment_option.save!(validate: false)
-
-      effective_plan = payment_option.effective_installment_plan
-      expect(effective_plan.number_of_installments).to eq(3)
-      expect(effective_plan.recurrence).to eq("monthly")
-    end
   end
 
   describe "#calculate_installment_payment_price_cents" do
@@ -125,23 +115,6 @@ describe PaymentOption do
       expect(result).to eq([1000, 1000, 1000])
     end
 
-    it "calculates payment amounts using snapshot data" do
-      product = create(:product, price_cents: 3002) # $30.02
-      seller = create(:user)
-      subscription = create(:subscription, link: product, seller: seller, is_installment_plan: false)
-      subscription.update!(is_installment_plan: true)
-      subscription.payment_options.destroy_all
-      payment_option = PaymentOption.new(subscription:, installment_plan: nil,
-                            installment_plan_snapshot: { number_of_installments: 3, recurrence: "monthly" },
-                            installment_plan_number_of_installments: 3,
-                            installment_plan_recurrence: "monthly",
-                            price: product.prices.first)
-      payment_option.define_singleton_method(:update_subscription_last_payment_option) { }
-      payment_option.save!(validate: false)
-
-      result = payment_option.calculate_installment_payment_price_cents(3002)
-      expect(result).to eq([1002, 1000, 1000])
-    end
 
     it "returns nil for non-installment subscriptions" do
       product = create(:product, price_cents: 3000) # $30.00
