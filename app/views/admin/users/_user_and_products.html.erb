@@ -36,7 +36,6 @@
           <%= render("admin/links/product", product: product, show_purchases: true, is_affiliate_user: is_affiliate_user, user_id: user.id) %>
         <% end %>
         <% if pagy.pages > 1 %>
-          <%# TODO: Migrate to React Pagination component - replace with <Pagination /> component %>
           <div class="flex gap-2 w-full justify-center" role="navigation" aria-label="Pagination">
             <%= link_to("‹ Previous", pagy_url_for(pagy, pagy.prev), class: "button", inert: !pagy.prev) %>
             <div class="hidden lg:flex lg:flex-grow lg:justify-center lg:gap-2">
