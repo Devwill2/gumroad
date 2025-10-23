@@ -20,6 +20,12 @@ declare module "$vendor/evaporate.cjs" {
       fetchCurrentServerTimeUrl: string;
       maxFileSize?: number;
       s3Endpoint?: string;
+      maxConcurrentParts?: number;
+      partSize?: number;
+      retryBackoffPower?: number;
+      maxRetryBackoffSecs?: number;
+      progressIntervalMS?: number;
+      logging?: boolean;
     });
 
     add(params: UploadParams): string | number;
