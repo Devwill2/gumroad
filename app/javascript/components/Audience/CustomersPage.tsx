@@ -719,6 +719,35 @@ const CustomerDrawer = ({
     setLoadingId(null);
   };
 
+  const onSendAllMissedPosts = async () => {
+    if (!missedPosts) return;
+
+    setLoadingId("all");
+    let successCount = 0;
+    let errorCount = 0;
+
+    for (const post of missedPosts) {
+      if (!sentEmailIds.current.has(post.id)) {
+        try {
+          await resendPost(customer.id, post.id);
+          sentEmailIds.current.add(post.id);
+          successCount++;
+        } catch (e) {
+          errorCount++;
+        }
+      }
+    }
+
+    if (successCount > 0) {
+      showAlert(`Successfully sent ${successCount} missed posts`, "success");
+    }
+    if (errorCount > 0) {
+      showAlert(`Failed to send ${errorCount} posts`, "error");
+    }
+
+    setLoadingId(null);
+  };
+
   const [productPurchases, setProductPurchases] = React.useState<Customer[]>([]);
   const [selectedProductPurchaseId, setSelectedProductPurchaseId] = React.useState<string | null>(null);
   const selectedProductPurchase = productPurchases.find(({ id }) => id === selectedProductPurchaseId);
@@ -1203,6 +1232,13 @@ const CustomerDrawer = ({
         <section className="stack">
           <header>
             <h3>Send missed posts</h3>
+            <Button
+              color="primary"
+              disabled={loadingId === "all" || missedPosts?.every(post => sentEmailIds.current.has(post.id))}
+              onClick={() => void onSendAllMissedPosts()}
+            >
+              {loadingId === "all" ? "Sending all..." : "Send all missed posts"}
+            </Button>
           </header>
           {missedPosts ? (
             <>

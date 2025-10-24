@@ -516,6 +516,23 @@ describe "Sales page", type: :system, js: true do
         within_section("Post 10") { expect(page).to have_button("Sent", disabled: true) }
       end
 
+      it "allows sending all missed posts at once" do
+        allow_any_instance_of(User).to receive(:sales_cents_total).and_return(Installment::MINIMUM_SALES_CENTS_VALUE)
+        stripe_connect_account = create(:merchant_account_stripe_connect, user: seller)
+        create(:purchase, seller:, link: product1, merchant_account: stripe_connect_account)
+
+        visit customers_path
+        find(:table_row, { "Name" => "Customer 1" }).click
+        within_section "Product 1", section_element: :aside do
+          within_section "Send missed posts", section_element: :section do
+            expect(page).to have_button("Send all missed posts")
+            click_on "Send all missed posts"
+            expect(page).to have_button("Sending all...", disabled: true)
+          end
+        end
+        expect(page).to have_alert(text: /Successfully sent \d+ missed posts/)
+      end
+
       it "does not allow re-sending an email if the seller is not eligible to send emails" do
         visit customers_path
         find(:table_row, { "Name" => "Customer 1" }).click
