@@ -1237,7 +1237,7 @@ const CustomerDrawer = ({
               disabled={loadingId === "all" || missedPosts?.every(post => sentEmailIds.current.has(post.id))}
               onClick={() => void onSendAllMissedPosts()}
             >
-              {loadingId === "all" ? "Sending all..." : "Send all missed posts"}
+              {loadingId === "all" ? "Sending all..." : "Send missed posts"}
             </Button>
           </header>
           {missedPosts ? (
