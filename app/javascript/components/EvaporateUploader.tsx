@@ -8,8 +8,9 @@ export type EvaporateUploader = {
     mimeType: string;
     onComplete: () => void;
     onProgress: (progress: { percent: number; bitrate: number }) => void;
-  }) => string | number;
+  }) => Promise<string | number | undefined>;
   cancelUpload: (cancellationKey: string) => void;
+  retryUpload: () => boolean;
 };
 // `null` indicates Evaporate is not supported
 type ContextValue = null | EvaporateUploader;
