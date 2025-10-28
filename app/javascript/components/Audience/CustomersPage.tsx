@@ -1580,21 +1580,8 @@ const EmailSection = ({
 
   return (
     <section className="stack">
-      <header style={{ display: "flex", alignItems: "center", gap: "var(--spacer-3)" }}>
-        <h3 style={{ margin: 0 }}>{label}</h3>
-        {receiptEmail && onResendReceipt ? (
-          <Button
-            color="primary"
-            onClick={() => onResendReceipt(receiptEmail.id)}
-            disabled={!!loadingId || sentEmailIds?.current.has(receiptEmail.id)}
-          >
-            {sentEmailIds?.current.has(receiptEmail.id)
-              ? "Receipt resent"
-              : loadingId === receiptEmail.id
-                ? "Resending receipt..."
-                : "Resend receipt"}
-          </Button>
-        ) : null}
+      <header>
+        <h3>{label}</h3>
       </header>
       {isEditing ? (
         <fieldset>
@@ -1654,6 +1641,25 @@ const EmailSection = ({
           </fieldset>
         </section>
       ) : null}
+      {receiptEmail && (
+        <section>
+          <Button
+            color="primary"
+            onClick={() => {
+              if (receiptEmail && onResendReceipt) {
+                onResendReceipt(receiptEmail.id);
+              }
+            }}
+            disabled={!!loadingId || sentEmailIds?.current.has(receiptEmail.id)}
+          >
+            {sentEmailIds?.current.has(receiptEmail.id)
+              ? "Receipt resent"
+              : loadingId === receiptEmail.id
+                ? "Resending receipt..."
+                : "Resend receipt"}
+          </Button>
+        </section>
+      )}
     </section>
   );
 };
