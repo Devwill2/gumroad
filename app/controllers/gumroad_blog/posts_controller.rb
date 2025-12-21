@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class GumroadBlog::PostsController < GumroadBlog::BaseController
-  layout "gumroad_blog"
+  layout :set_layout
 
-  before_action :hide_layouts
+  before_action :hide_layouts, except: [:show]
   before_action :set_blog_owner!
   before_action :set_post, only: [:show]
 
@@ -33,11 +33,16 @@ class GumroadBlog::PostsController < GumroadBlog::BaseController
   def show
     authorize @post, policy_class: GumroadBlog::PostsPolicy
 
-    @props = PostPresenter.new(pundit_user: pundit_user, post: @post, purchase_id_param: nil).post_component_props
+    props = PostPresenter.new(pundit_user: pundit_user, post: @post, purchase_id_param: nil).post_component_props
+    render inertia: "GumroadBlog/Post", props: props
   end
 
   private
     def set_post
       @post = @blog_owner.installments.find_by!(slug: params[:slug])
+    end
+
+    def set_layout
+      action_name == "show" ? "inertia" : "gumroad_blog"
     end
 end

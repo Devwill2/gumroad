@@ -37,7 +37,7 @@ type GlobalProps = {
     policies: Record<string, Record<string, boolean>>;
     is_gumroad_admin: boolean;
     is_impersonating: boolean;
-  };
+  } | null;
   current_seller: {
     id: number;
     email: string;
@@ -50,7 +50,7 @@ type GlobalProps = {
       name: string;
       offset: number;
     };
-  };
+  } | null;
   href: string;
   locale: string;
 };

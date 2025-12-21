@@ -2,6 +2,7 @@
 
 require "spec_helper"
 require "shared_examples/authorize_called"
+require "inertia_rails/rspec"
 
 describe GumroadBlog::PostsController do
   let(:blog_owner) { create(:user, username: "gumroad") }
@@ -98,10 +99,13 @@ describe GumroadBlog::PostsController do
       let(:request_params) { { slug: post.slug } }
     end
 
-    it "sets @props correctly" do
+    it "renders Inertia component with correct props", inertia: true do
       get :show, params: { slug: post.slug }
 
-      expect(assigns[:props]).to eq(PostPresenter.new(pundit_user: controller.pundit_user, post: post, purchase_id_param: nil).post_component_props)
+      expect_inertia.to render_component("GumroadBlog/Post")
+      expect_inertia.to include_props(
+        PostPresenter.new(pundit_user: controller.pundit_user, post: post, purchase_id_param: nil).post_component_props
+      )
     end
 
     context "when post is not found" do

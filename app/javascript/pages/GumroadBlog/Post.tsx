@@ -11,7 +11,6 @@ import { useRichTextEditor } from "$app/components/RichTextEditor";
 import { formatPostDate } from "$app/components/server-components/Profile/PostPage";
 import { useUserAgentInfo } from "$app/components/UserAgent";
 import { useRunOnce } from "$app/components/useRunOnce";
-import PublicLayout from "$app/inertia/public_layout";
 
 type PostProps = {
   external_id: string;
@@ -47,40 +46,36 @@ export default function GumroadBlogPost() {
   const publishedAtFormatted = formatPostDate(published_at, userAgentInfo.locale);
 
   return (
-    <PublicLayout>
-      <div className="container mx-auto px-8 py-16 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <BackToBlog className="mb-6" />
-          <header>
-            <h1 className="mb-4">{subject}</h1>
-            <time className="text-dark-gray">{publishedAtFormatted}</time>
-          </header>
-          <div className="mx-auto mt-6 grid max-w-3xl justify-items-center gap-6 border-t py-12 text-xl">
-            {pageLoaded ? null : <LoadingSpinner className="size-8" />}
-            <EditorContent className="rich-text" editor={editor} />
+    <div className="container mx-auto px-8 py-16 sm:px-6 md:py-24 lg:px-8">
+      <div className="mx-auto max-w-3xl">
+        <BackToBlog className="mb-6" />
+        <header>
+          <h1 className="mb-4">{subject}</h1>
+          <time className="text-dark-gray">{publishedAtFormatted}</time>
+        </header>
+        <div className="mx-auto mt-6 grid max-w-3xl justify-items-center gap-6 border-t py-12 text-xl">
+          {pageLoaded ? null : <LoadingSpinner className="size-8" />}
+          <EditorContent className="rich-text" editor={editor} />
 
-            {call_to_action ? (
-              <div className="grid">
-                <p>
-                  <a
-                    className="button accent"
-                    href={call_to_action.url}
-                    target="_blank"
-                    style={{ whiteSpace: "normal" }}
-                    rel="noopener noreferrer"
-                  >
-                    {call_to_action.text}
-                  </a>
-                </p>
-              </div>
-            ) : null}
-          </div>
+          {call_to_action ? (
+            <div className="grid">
+              <p>
+                <a
+                  className="button accent"
+                  href={call_to_action.url}
+                  target="_blank"
+                  style={{ whiteSpace: "normal" }}
+                  rel="noopener noreferrer"
+                >
+                  {call_to_action.text}
+                </a>
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
-    </PublicLayout>
+    </div>
   );
 }
 
-// Skip the default dashboard layout for this public page
 GumroadBlogPost.layout = (page: React.ReactNode) => page;
-
