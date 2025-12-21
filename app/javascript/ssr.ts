@@ -72,7 +72,7 @@ import AdvancedSettingsPage from "$app/components/server-components/Settings/Adv
 import ApplicationEditPage from "$app/components/server-components/Settings/AdvancedPage/EditApplicationPage";
 import AuthorizedApplicationsSettingsPage from "$app/components/server-components/Settings/AuthorizedApplicationsPage";
 import MainSettingsPage from "$app/components/server-components/Settings/MainPage";
-import PasswordSettingsPage from "$app/components/server-components/Settings/PasswordPage";
+
 import PaymentsSettingsPage from "$app/components/server-components/Settings/PaymentsPage";
 import TeamSettingsPage from "$app/components/server-components/Settings/TeamPage";
 import ThirdPartyAnalyticsSettingsPage from "$app/components/server-components/Settings/ThirdPartyAnalyticsPage";
@@ -146,7 +146,7 @@ ReactOnRails.register({
   MainSettingsPage,
   Nav,
   PasswordResetPage,
-  PasswordSettingsPage,
+
   PaymentsSettingsPage,
   PayoutCreditCard,
   PdfReaderPage,
