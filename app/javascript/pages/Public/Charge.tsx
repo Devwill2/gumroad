@@ -36,4 +36,3 @@ const Charge = () => (
 );
 
 export default Charge;
-

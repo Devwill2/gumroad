@@ -7,7 +7,7 @@ class PublicController < ApplicationController
 
   before_action :set_on_public_page
 
-  layout "inertia", only: [:widgets, :ping, :api, :charge, :license_key_lookup, :thank_you]
+  layout "inertia", only: [:widgets, :ping, :api, :charge, :license_key_lookup]
 
   def home
     redirect_to user_signed_in? ? after_sign_in_path_for(logged_in_user) : login_path
@@ -50,7 +50,7 @@ class PublicController < ApplicationController
 
   def license_key_lookup
     @title = "What is my license key?"
-    render inertia: "Public/LicenseKey"
+    render inertia: "Public/LicenseKeyLookup"
   end
 
   # api methods
@@ -64,11 +64,6 @@ class PublicController < ApplicationController
     @title = "Ping"
 
     render inertia: "Public/Ping"
-  end
-
-  def thank_you
-    @title = "Thank you!"
-    render inertia: "Public/ThankYou"
   end
 
   def working_webhook
