@@ -5,7 +5,6 @@ import * as React from "react";
 import { Button } from "$app/components/Button";
 import { showAlert } from "$app/components/server-components/Alert";
 import ApplicationForm from "$app/components/Settings/AdvancedPage/ApplicationForm";
-import { FormSection } from "$app/components/ui/FormSection";
 import { Row, RowActions, RowContent, Rows } from "$app/components/ui/Rows";
 
 export type Application = {
@@ -16,6 +15,12 @@ export type Application = {
 
 const CreateApplication = () => (
   <>
+    <header id="application-form">
+      <h2>Applications</h2>
+      <a href="/help/article/280-create-application-api" target="_blank" rel="noreferrer">
+        Learn more
+      </a>
+    </header>
     <h3>Create application</h3>
     <ApplicationForm />
   </>
@@ -78,18 +83,9 @@ const ApplicationRow = ({ application, onRemove }: { application: Application; o
 };
 
 const ApplicationsSection = (props: { applications: Application[] }) => (
-  <FormSection
-    header={
-      <>
-        <h2>Applications</h2>
-        <a href="/help/article/280-create-application-api" target="_blank" rel="noreferrer">
-          Learn more
-        </a>
-      </>
-    }
-  >
+  <section className="p-4! md:p-8!">
     <CreateApplication />
     <ApplicationList applications={props.applications} />
-  </FormSection>
+  </section>
 );
 export default ApplicationsSection;

@@ -2,8 +2,6 @@ import * as React from "react";
 
 import { Button } from "$app/components/Button";
 import { Modal } from "$app/components/Modal";
-import { Input } from "$app/components/ui/Input";
-import { Label } from "$app/components/ui/Label";
 
 type Props = {
   balance: string | null;
@@ -40,10 +38,10 @@ export const ConfirmBalanceForfeitOnPayoutMethodChangeModal = ({ balance, open, 
               Please confirm that you're okay forfeiting your balance by typing <b>"I understand"</b> below and clicking{" "}
               <b>Confirm</b>.
               <div className="mt-4">
-                <Label htmlFor="confirmation-input" className="sr-only">
+                <label htmlFor="confirmation-input" className="sr-only">
                   Type "I understand" to confirm
-                </Label>
-                <Input
+                </label>
+                <input
                   id="confirmation-input"
                   type="text"
                   value={confirmText}

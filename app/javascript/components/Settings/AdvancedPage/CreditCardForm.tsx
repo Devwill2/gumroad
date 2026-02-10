@@ -8,8 +8,6 @@ import { assertResponseError, request, ResponseError } from "$app/utils/request"
 import { Button } from "$app/components/Button";
 import { Icon } from "$app/components/Icons";
 import { showAlert } from "$app/components/server-components/Alert";
-import { FormSection } from "$app/components/ui/FormSection";
-import { InputGroup } from "$app/components/ui/InputGroup";
 import { WithTooltip } from "$app/components/WithTooltip";
 
 type Props = {
@@ -38,22 +36,19 @@ export const CreditCardForm = ({ card, can_remove, read_only }: Props) => {
   });
 
   return status === "removed" ? null : (
-    <FormSection
-      header={
-        <>
-          <h2>Saved credit card</h2>
-          <a href="/help/article/216-delete-credit-card-information" target="_blank" rel="noreferrer">
-            Learn more.
-          </a>
-        </>
-      }
-    >
+    <section className="p-4! md:p-8!">
+      <header>
+        <h2>Saved credit card</h2>
+        <a href="/help/article/216-delete-credit-card-information" target="_blank" rel="noreferrer">
+          Learn more.
+        </a>
+      </header>
       <div className="flex flex-col gap-4">
-        <InputGroup readOnly aria-label="Saved credit card">
+        <div className="input read-only" aria-label="Saved credit card">
           <Icon name="outline-credit-card" />
           <span>{card.number}</span>
           <span style={{ marginLeft: "auto" }}>{card.expiration_date}</span>
-        </InputGroup>
+        </div>
         {read_only ? null : (
           <WithTooltip
             tip={
@@ -69,7 +64,7 @@ export const CreditCardForm = ({ card, can_remove, read_only }: Props) => {
           </WithTooltip>
         )}
       </div>
-    </FormSection>
+    </section>
   );
 };
 

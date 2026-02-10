@@ -12,15 +12,8 @@ import { Icon } from "$app/components/Icons";
 import { useLoggedInUser } from "$app/components/LoggedInUser";
 import { Layout as SettingsLayout } from "$app/components/Settings/Layout";
 import { TypeSafeOptionSelect } from "$app/components/TypeSafeOptionSelect";
-import { Checkbox } from "$app/components/ui/Checkbox";
-import { Fieldset, FieldsetDescription, FieldsetTitle } from "$app/components/ui/Fieldset";
-import { FormSection } from "$app/components/ui/FormSection";
-import { Input } from "$app/components/ui/Input";
-import { Label } from "$app/components/ui/Label";
 import { Placeholder } from "$app/components/ui/Placeholder";
 import { Row, RowActions, RowContent, RowDetails, Rows } from "$app/components/ui/Rows";
-import { Switch } from "$app/components/ui/Switch";
-import { Textarea } from "$app/components/ui/Textarea";
 
 type Products = { permalink: string; name: string }[];
 
@@ -87,117 +80,121 @@ export default function ThirdPartyAnalyticsPage() {
       canUpdate={Boolean(loggedInUser?.policies.settings_third_party_analytics_user.update) && !form.processing}
     >
       <form>
-        <FormSection
-          header={
-            <>
-              <h2>Third-party analytics</h2>
-              <a href="/help/article/174-third-party-analytics" target="_blank" rel="noreferrer">
-                Learn more
-              </a>
-              <div>
-                You can add a Facebook tracking pixel and link your Google Analytics properties to track your visitors.
-              </div>
-            </>
-          }
-        >
+        <section className="p-4! md:p-8!">
+          <header>
+            <h2>Third-party analytics</h2>
+            <a href="/help/article/174-third-party-analytics" target="_blank" rel="noreferrer">
+              Learn more
+            </a>
+            <div>
+              You can add a Facebook tracking pixel and link your Google Analytics properties to track your visitors.
+            </div>
+          </header>
           <Details
             className="toggle"
             open={!thirdPartyAnalytics.disable_third_party_analytics}
             summary={
-              <Switch
-                checked={!thirdPartyAnalytics.disable_third_party_analytics}
-                onChange={(evt) => updateThirdPartyAnalytics({ disable_third_party_analytics: !evt.target.checked })}
-                label="Enable third-party analytics services"
-              />
+              <label>
+                <input
+                  type="checkbox"
+                  role="switch"
+                  checked={!thirdPartyAnalytics.disable_third_party_analytics}
+                  onChange={(evt) => updateThirdPartyAnalytics({ disable_third_party_analytics: !evt.target.checked })}
+                />
+                Enable third-party analytics services
+              </label>
             }
           >
             <Dropdown className="flex flex-col gap-4">
-              <Fieldset>
-                <FieldsetTitle>
-                  <Label htmlFor={`${uid}googleAnalyticsId`}>Google Analytics Property ID</Label>
+              <fieldset>
+                <legend>
+                  <label htmlFor={`${uid}googleAnalyticsId`}>Google Analytics Property ID</label>
                   <a href="/help/article/174-third-party-analytics" target="_blank" rel="noreferrer">
                     Learn more
                   </a>
-                </FieldsetTitle>
-                <Input
+                </legend>
+                <input
                   id={`${uid}googleAnalyticsId`}
                   type="text"
                   placeholder="G-ABCD232DSE"
                   value={thirdPartyAnalytics.google_analytics_id}
                   onChange={(evt) => updateThirdPartyAnalytics({ google_analytics_id: evt.target.value })}
                 />
-              </Fieldset>
-              <Fieldset>
-                <FieldsetTitle>
-                  <Label htmlFor={`${uid}facebookPixel`}>Facebook Pixel</Label>
+              </fieldset>
+              <fieldset>
+                <legend>
+                  <label htmlFor={`${uid}facebookPixel`}>Facebook Pixel</label>
                   <a href="/help/article/174-third-party-analytics" target="_blank" rel="noreferrer">
                     Learn more
                   </a>
-                </FieldsetTitle>
-                <Input
+                </legend>
+                <input
                   id={`${uid}facebookPixel`}
                   type="text"
                   placeholder="9127380912836192"
                   value={thirdPartyAnalytics.facebook_pixel_id}
                   onChange={(evt) => updateThirdPartyAnalytics({ facebook_pixel_id: evt.target.value })}
                 />
-              </Fieldset>
-              <Label>
-                <Checkbox
+              </fieldset>
+              <label>
+                <input
+                  type="checkbox"
                   checked={!thirdPartyAnalytics.skip_free_sale_analytics}
                   onChange={(evt) => updateThirdPartyAnalytics({ skip_free_sale_analytics: !evt.target.checked })}
                 />
                 Send 'Purchase' events for free ($0) sales
-              </Label>
+              </label>
             </Dropdown>
           </Details>
-        </FormSection>
-        <FormSection header={<h2>Domain verification</h2>}>
+        </section>
+        <section className="p-4! md:p-8!">
+          <header>
+            <h2>Domain verification</h2>
+          </header>
           <Details
             className="toggle"
             open={thirdPartyAnalytics.enable_verify_domain_third_party_services}
             summary={
-              <Switch
-                checked={thirdPartyAnalytics.enable_verify_domain_third_party_services}
-                onChange={(evt) =>
-                  updateThirdPartyAnalytics({ enable_verify_domain_third_party_services: evt.target.checked })
-                }
-                label="Verify domain in third-party services"
-              />
+              <label>
+                <input
+                  type="checkbox"
+                  role="switch"
+                  checked={thirdPartyAnalytics.enable_verify_domain_third_party_services}
+                  onChange={(evt) =>
+                    updateThirdPartyAnalytics({ enable_verify_domain_third_party_services: evt.target.checked })
+                  }
+                />
+                Verify domain in third-party services
+              </label>
             }
           >
             <Dropdown className="flex flex-col gap-4">
-              <Fieldset>
-                <FieldsetTitle>
-                  <Label htmlFor={`${uid}facebookMetaTag`}>Facebook Business</Label>
+              <fieldset>
+                <legend>
+                  <label htmlFor={`${uid}facebookMetaTag`}>Facebook Business</label>
                   <a href="/help/article/290-facebook-domain-verification" target="_blank" rel="noreferrer">
                     Learn more
                   </a>
-                </FieldsetTitle>
-                <Textarea
+                </legend>
+                <textarea
                   id={`${uid}facebookMetaTag`}
                   placeholder='<meta name="facebook-domain-verification" content="me2vv6lgwoh" />'
                   value={thirdPartyAnalytics.facebook_meta_tag}
                   onChange={(evt) => updateThirdPartyAnalytics({ facebook_meta_tag: evt.target.value })}
                 />
-                <FieldsetDescription>
-                  Enter meta tag containing the Facebook domain verification code.
-                </FieldsetDescription>
-              </Fieldset>
+                <small>Enter meta tag containing the Facebook domain verification code.</small>
+              </fieldset>
             </Dropdown>
           </Details>
-        </FormSection>
-        <FormSection
-          header={
-            <>
-              <h2>Snippets</h2>
-              <div>Add custom JavaScript to pages in the checkout flow.</div>
-              <a href="/help/article/174-third-party-analytics" target="_blank" rel="noreferrer">
-                Learn more
-              </a>
-            </>
-          }
-        >
+        </section>
+        <section className="p-4! md:p-8!">
+          <header>
+            <h2>Snippets</h2>
+            <div>Add custom JavaScript to pages in the checkout flow.</div>
+            <a href="/help/article/174-third-party-analytics" target="_blank" rel="noreferrer">
+              Learn more
+            </a>
+          </header>
           {thirdPartyAnalytics.snippets.length > 0 ? (
             <>
               <Rows role="list">
@@ -216,7 +213,7 @@ export default function ThirdPartyAnalyticsPage() {
           ) : (
             <Placeholder>{addSnippetButton}</Placeholder>
           )}
-        </FormSection>
+        </section>
       </form>
     </SettingsLayout>
   );
@@ -285,17 +282,17 @@ const SnippetRow = ({
       </RowActions>
       {expanded ? (
         <RowDetails className="flex flex-col gap-4">
-          <Fieldset>
-            <Label htmlFor={`${uid}name`}>Name</Label>
-            <Input
+          <fieldset>
+            <label htmlFor={`${uid}name`}>Name</label>
+            <input
               id={`${uid}name`}
               type="text"
               value={snippet.name}
               onChange={(evt) => updateSnippet({ name: evt.target.value })}
             />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor={`${uid}location`}>Location</Label>
+          </fieldset>
+          <fieldset>
+            <label htmlFor={`${uid}location`}>Location</label>
             <TypeSafeOptionSelect
               id={`${uid}location`}
               value={snippet.location}
@@ -305,9 +302,9 @@ const SnippetRow = ({
                 label: LOCATION_TITLES[location] ?? "Receipt",
               }))}
             />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor={`${uid}product`}>Products</Label>
+          </fieldset>
+          <fieldset>
+            <label htmlFor={`${uid}product`}>Products</label>
             <TypeSafeOptionSelect
               id={`${uid}product`}
               value={snippet.product ?? ""}
@@ -320,16 +317,16 @@ const SnippetRow = ({
                 })),
               ]}
             />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor={`${uid}code`}>Code</Label>
-            <Textarea
+          </fieldset>
+          <fieldset>
+            <label htmlFor={`${uid}code`}>Code</label>
+            <textarea
               id={`${uid}code`}
               placeholder="Enter your analytics code"
               value={snippet.code}
               onChange={(evt) => updateSnippet({ code: evt.target.value })}
             />
-          </Fieldset>
+          </fieldset>
         </RowDetails>
       ) : null}
     </Row>

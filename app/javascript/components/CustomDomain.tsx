@@ -1,3 +1,4 @@
+import cx from "classnames";
 import * as React from "react";
 import { cast } from "ts-safe-cast";
 
@@ -5,10 +6,6 @@ import { asyncVoid } from "$app/utils/promise";
 import { assertResponseError, request, ResponseError } from "$app/utils/request";
 
 import { Button } from "$app/components/Button";
-import { Fieldset, FieldsetDescription, FieldsetTitle } from "$app/components/ui/Fieldset";
-import { Input } from "$app/components/ui/Input";
-import { InputGroup } from "$app/components/ui/InputGroup";
-import { Label } from "$app/components/ui/Label";
 import { Pill } from "$app/components/ui/Pill";
 
 type VerificationState = "initial" | "verifying" | "success" | "failure";
@@ -70,21 +67,22 @@ const CustomDomain = ({
   });
 
   return (
-    <Fieldset
-      state={
-        verificationInfo.state === "success" ? "success" : verificationInfo.state === "failure" ? "danger" : undefined
-      }
+    <fieldset
+      className={cx({
+        success: verificationInfo.state === "success",
+        danger: verificationInfo.state === "failure",
+      })}
     >
-      <FieldsetTitle>
-        <Label htmlFor={uid}>{label}</Label>
+      <legend>
+        <label htmlFor={uid}>{label}</label>
         {includeLearnMoreLink ? (
           <a href="/help/article/153-setting-up-a-custom-domain" target="_blank" rel="noreferrer">
             Learn more
           </a>
         ) : null}
-      </FieldsetTitle>
-      <InputGroup>
-        <Input
+      </legend>
+      <div className="input input-wrapper">
+        <input
           id={uid}
           placeholder="yourdomain.com"
           type="text"
@@ -114,9 +112,9 @@ const CustomDomain = ({
             </Button>
           </Pill>
         ) : null}
-      </InputGroup>
-      <FieldsetDescription>{verificationInfo.message}</FieldsetDescription>
-    </Fieldset>
+      </div>
+      <small>{verificationInfo.message}</small>
+    </fieldset>
   );
 };
 
