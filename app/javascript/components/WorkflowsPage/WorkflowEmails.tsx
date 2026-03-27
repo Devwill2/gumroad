@@ -578,8 +578,14 @@ const EmailPreview = ({
   const emailFiles = useFiles((files) => files.filter(({ email_id }) => email_id === email.id));
 
   React.useEffect(() => {
-    if (isEditing) setTimeout(() => selfRef.current?.scrollIntoView({ behavior: "smooth" }), 500);
-  });
+    if (!isEditing) return;
+
+    const timeoutId = window.setTimeout(() => {
+      selfRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 500);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isEditing]);
 
   return (
     <section className="flex flex-col gap-4" ref={selfRef}>
